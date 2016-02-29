@@ -114,7 +114,7 @@ gearoenix::render::Scene::Scene(const char *const &fileAddress, const unsigned i
 			<< "            }\n"
 			<< "        }\n"
 			/////////// Learning Rate Coefficent ---------------------------------------------------
-			<< "        float lrc = float(iter * iter) + 1.0f;\n" /// \todo find better function 
+			<< "        float lrc = iter + 1.0f;\n" /// \todo find better function 
 			<< "        barrier();\n" /// \todo can be imporoved
 			/////////// Updating weights of map nodes ----------------------------------------------
 			<< "        for(uint mi = asgmlb; mi < asgmub; ++mi)\n"
@@ -203,8 +203,8 @@ gearoenix::render::Scene::Scene(const char *const &fileAddress, const unsigned i
 		glDeleteBuffers(1, &mapBuf);
 		glGenTextures(1, &txtmapbuf);
 		glBindTexture(GL_TEXTURE_2D, txtmapbuf);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GLsizei(mapAspect), GLsizei(mapAspect), 0, GL_RGBA, GL_UNSIGNED_BYTE, (void*)mappix);
@@ -238,9 +238,9 @@ gearoenix::render::Scene::Scene(const char *const &fileAddress, const unsigned i
 		const GLfloat m3[] =
 		{
 			-0.5f, -0.1f, 0.0f,         0.0f, 1.0f,
-			-0.5f, -0.6f, 0.0f,         1.0f, 1.0f,
+			-0.5f, -1.1f, 0.0f,         1.0f, 1.0f,
 			 0.5f, -0.1f, 0.0f,         0.0f, 0.0f,
-			 0.5f, -0.6f, 0.0f,         1.0f, 0.0f,
+			 0.5f, -1.1f, 0.0f,         1.0f, 0.0f,
 		};
 		const GLuint ind[]
 		{
