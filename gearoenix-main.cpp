@@ -120,7 +120,7 @@ gearoenix::ui::MainWindow::MainWindow(const char *const caption, const int &widt
 	glfwSetCursorPosCallback(window, MainWindow::onCursorMoveEvent);
 	glfwSetScrollCallback(window, MainWindow::onScroll);
 	glfwSetWindowSizeCallback(window, MainWindow::onChangeSizeEvent);
-	scene = new render::Scene("origin", 9, 100);
+	scene = new render::Scene("origin", 9, 5);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
